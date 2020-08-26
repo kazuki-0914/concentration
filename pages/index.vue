@@ -1,36 +1,46 @@
+// <template>
+//   <div class="container">
+//     <div>
+//       <Logo />
+//       <h1 class="title">
+//         concentration
+//       </h1>
+//       <div class="links">
+//         <a
+//           href="https://nuxtjs.org/"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           class="button--green"
+//         >
+//           Documentation
+//         </a>
+//         <a
+//           href="https://github.com/nuxt/nuxt.js"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           class="button--grey"
+//         >
+//           GitHub
+//         </a>
+//       </div>
+//     </div>
+//   </div>
+// </template>
+
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        concentration
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- <nuxt-link to="/one">Home page</nuxt-link>
+  <nuxt-link to="/one1">error page</nuxt-link> -->
+  <nuxt-link to="/helloworld">hello page</nuxt-link>
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue'
 
-export default Vue.extend({})
+// export default Vue.extend({})
+export default {
+    layout:'sidebar',
+}
 </script>
 
 <style>
