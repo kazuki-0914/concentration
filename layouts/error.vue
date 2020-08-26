@@ -7,8 +7,5 @@
 </template>
 
 <style>
-  export default {
-    props: ['error'],
-    /* layout: 'blog' // エラーページ用のカスタムレイアウトを指定できます */
-  }
+
 </style>
