@@ -1,7 +1,8 @@
 <template>
   <!-- <nuxt-link to="/one">Home page</nuxt-link>
   <nuxt-link to="/one1">error page</nuxt-link> -->
-  <nuxt-link to="/helloworld">hello page</nuxt-link>
+  <!-- <nuxt-link to="/helloworld">hello page</nuxt-link> -->
+  <nuxt-link to="/study/weeks">count page</nuxt-link>
 </template>
 
 <script lang="ts">
