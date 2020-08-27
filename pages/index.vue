@@ -1,75 +1,30 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        concentration
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <!-- ・スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
+    <button v-on:click="disp">Click</button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Component from 'vue-class-component'
 
-export default Vue.extend({})
+@Component
+export default class Trump extends Vue {
+  message = 'カードを表示しました'
+
+  //カードを表示する 
+  disp() {
+
+    console.log(this.message)
+  }
+
+}
 </script>
 
 <style>
 .container {
-  margin: 0 auto;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  background-color: green;
 }
 </style>

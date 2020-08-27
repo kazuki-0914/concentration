@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^1.0.0",
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "nuxt-property-decorator": "^2.7.2",
+    "vue-class-component": "^7.2.5",
+    "vue-property-decorator": "^9.0.0"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.0",
+    "@nuxt/types": "^2.14.3",
     "@nuxt/typescript-build": "^2.0.2"
   }
 }
