@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <!-- ・スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
-    <div v-for="filename in filenameArray" :key="filename" class="field">
-      <img v-bind:src="require('@/assets/png/' + filename + '.png')" class="trump" />
+    <div v-for="filename in filenameArray" :key="filename.string" class="field">
+      <img
+        v-bind:src="require('@/assets/png/' + filename + '.png')"
+        class="trump"
+      />
     </div>
   </div>
 </template>
@@ -11,9 +14,13 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { TRUMP_MARKS } from '~/store/constants'
 import { TRUMP_NUMBERS } from '~/store/constants'
+let text = "Hello, worlda"
 
 @Component
 export default class Trump extends Vue {
+
+  filenameArray: any
+
   data() {
     return {
       filenameArray: []

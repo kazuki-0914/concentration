@@ -60,3 +60,7 @@ Ctrl＋CCしてからまたrun dev
 
 Lint
 npm i -D @nuxtjs/eslint-config-typescript babel-eslint eslint eslint-config-prettier eslint-plugin-nuxt eslint-plugin-prettier prettier stylelint stylelint-config-prettier stylelint-config-standard
+
+plugin
+Prettier
+line-endings
