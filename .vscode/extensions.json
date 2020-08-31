@@ -1,7 +1,7 @@
 {
-    "recommendations" :[
-        "octref.vetur",
-        "dbaeumer.vscode-eslint",
-        "stylelint.vscode-stylelint"
-    ]
+  "recommendations": [
+    "octref.vetur",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint"
+  ]
 }

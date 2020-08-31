@@ -1,46 +1,45 @@
 <template>
   <div class="container">
-    <!-- ・スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
-    <div v-for="filename in filenameArray" :key="filename.string" class="field">
-      <img
-        v-bind:src="require('@/assets/png/' + filename + '.png')"
-        class="trump"
-      />
+    <!-- スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
+    <div
+      v-for="filename in filenamesArray"
+      :key="filename.string"
+      class="field"
+    >
+      <img :src="require('@/assets/png/' + filename + '.png')" class="trump" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
-import { TRUMP_MARKS } from '~/store/constants'
-import { TRUMP_NUMBERS } from '~/store/constants'
-let text = "Hello, worlda"
+import { Vue, Component } from 'vue-property-decorator'
+import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
 
 @Component
 export default class Trump extends Vue {
-
-  filenameArray: any
+  filenamesArray: any
 
   data() {
     return {
-      filenameArray: []
+      filenamesArray: []
     }
   }
-  //カードを表示する
-  created() {
-    let filenamesArray = []
-    for (let index = 0; index < TRUMP_MARKS.length; index++) {
-      let filenameNumArray = []
-      for (let num = 0; num < TRUMP_NUMBERS.length; num++) {
-        let imageName =
-          TRUMP_MARKS[index].mark + ('00' + TRUMP_NUMBERS[num].number).slice(-2)
-        console.log(imageName)
 
-        filenamesArray.push(imageName)
-      }
+  // 52枚カードを作成する
+  created() {
+    for (let index = 0; index < TRUMP_MARKS.length; index++) {
+      this.trumpNums(TRUMP_MARKS[index].mark)
     }
-    console.log('test')
-    this.$data.filenameArray = filenamesArray
+  }
+
+  trumpNums(mark: string) {
+    const filenamesArray = []
+    for (let num = 0; num < TRUMP_NUMBERS.length; num++) {
+      const imageName = mark + `00${TRUMP_NUMBERS[num].number}`.slice(-2)
+
+      filenamesArray.push(imageName)
+    }
+    this.$data.filenamesArray = filenamesArray
   }
 }
 </script>
