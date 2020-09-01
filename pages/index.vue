@@ -39,7 +39,7 @@ export default class Trump extends Vue {
 
       filenamesArray.push(imageName)
     }
-    this.$data.filenamesArray = filenamesArray
+    this.$data.filenamesArray = this.$data.filenamesArray.concat(filenamesArray)
   }
 }
 </script>
