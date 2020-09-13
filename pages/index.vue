@@ -6,24 +6,18 @@
       :key="filename.string"
       class="field"
     >
-      <img :src="require('@/assets/png/' + filename + '.png')" class="trump" />
+      <img :src="require(`@/assets/png/${filename}.png`)" class="trump" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Prop, Component } from 'nuxt-property-decorator'
 import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
 
 @Component
 export default class Trump extends Vue {
-  filenamesArray: any
-
-  data() {
-    return {
-      filenamesArray: []
-    }
-  }
+  @Prop({ type: Array }) filenamesArray: String[] = []
 
   // 52枚カードを作成する
   created() {
@@ -33,18 +27,16 @@ export default class Trump extends Vue {
   }
 
   trumpNums(mark: string) {
-    const filenamesArray = []
     for (let num = 0; num < TRUMP_NUMBERS.length; num++) {
       const imageName = mark + `00${TRUMP_NUMBERS[num].number}`.slice(-2)
 
-      filenamesArray.push(imageName)
+      this.filenamesArray.push(imageName)
     }
-    this.$data.filenamesArray = this.$data.filenamesArray.concat(filenamesArray)
   }
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   min-height: 100vh;
   background-color: green;
