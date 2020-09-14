@@ -1,37 +1,31 @@
 <template>
   <div class="container">
     <!-- スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
-    <div
-      v-for="filename in filenamesArray"
-      :key="filename.string"
-      class="field"
-    >
+    <div v-for="filename in filenamesArray" :key="filename" class="field">
       <img :src="require(`@/assets/png/${filename}.png`)" class="trump" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from 'nuxt-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
 
 @Component
 export default class Trump extends Vue {
-  @Prop({ type: Array }) filenamesArray: String[] = []
+  filenamesArray: String[] = []
 
   // 52枚カードを作成する
   created() {
-    for (let index = 0; index < TRUMP_MARKS.length; index++) {
-      this.trumpNums(TRUMP_MARKS[index].mark)
-    }
+    TRUMP_MARKS.forEach((trump) => this.trumpNums(trump.mark))
   }
 
   trumpNums(mark: string) {
-    for (let num = 0; num < TRUMP_NUMBERS.length; num++) {
-      const imageName = mark + `00${TRUMP_NUMBERS[num].number}`.slice(-2)
-
-      this.filenamesArray.push(imageName)
-    }
+    const filenamesArray = TRUMP_NUMBERS.map(function (value) {
+      const filename = mark + `00${value.number}`.slice(-2)
+      return filename
+    })
+    this.filenamesArray = this.filenamesArray.concat(filenamesArray)
   }
 }
 </script>
