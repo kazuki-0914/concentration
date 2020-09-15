@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
-
+import { addZero } from '~/utils/formatUtils'
 @Component
 export default class Trump extends Vue {
   filenamesArray: String[] = []
@@ -21,11 +21,9 @@ export default class Trump extends Vue {
   }
 
   trumpNums(mark: string) {
-    const filenamesArray = TRUMP_NUMBERS.map(function (value) {
-      const filename = mark + `00${value.number}`.slice(-2)
-      return filename
-    })
-    this.filenamesArray = this.filenamesArray.concat(filenamesArray)
+    this.filenamesArray = this.filenamesArray.concat(
+      TRUMP_NUMBERS.map((value) => `${mark}${addZero(value.number)}`)
+    )
   }
 }
 </script>
