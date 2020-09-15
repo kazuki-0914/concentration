@@ -11,16 +11,13 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
 import { addZero } from '~/utils/formatUtils'
+
 @Component
 export default class Trump extends Vue {
-  filenamesArray: String[] = []
-
-  // 52枚カードを表示する
-  created() {
-    this.filenamesArray = TRUMP_MARKS.flatMap((trump) =>
-      TRUMP_NUMBERS.map((value) => `${trump.mark}${addZero(value.number)}`)
-    )
-  }
+  // トランプ52枚のリスト
+  filenamesArray = TRUMP_MARKS.flatMap((trump) =>
+    TRUMP_NUMBERS.map((value) => `${trump.mark}${addZero(value.number)}`)
+  )
 }
 </script>
 
