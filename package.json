@@ -6,14 +6,51 @@
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
     "start": "nuxt-ts start",
-    "generate": "nuxt-ts generate"
+    "generate": "nuxt-ts generate",
+    "lint": "npm run lint:script && npm run lint:style",
+    "lint:script": "eslint --ext .ts,.js,.vue --ignore-path .gitignore -- ignore-pattern \"static/*\" .",
+    "lint:style": "stylelint \"assets/**/*.css\" \"{components,layouts,pages}/**/*.vue\"",
+    "lint:fix": "npm run lint:script -- --fix && npm run lint:style -- --fix",
+    "typecheck": "run-p build:* && tsc --noEmit"
+  },
+  "prettier": {
+    "semi": false,
+    "arrowParens": "always",
+    "trailingComma": "none",
+    "singleQuote": true
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-prettier"
+    ]
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^1.0.0",
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "nuxt-property-decorator": "^2.7.2",
+    "vue-class-component": "^7.2.5",
+    "vue-property-decorator": "^9.0.0"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.0",
-    "@nuxt/typescript-build": "^2.0.2"
+    "@nuxt/types": "^2.14.3",
+    "@nuxt/typescript-build": "^2.0.2",
+    "@nuxtjs/eslint-config-typescript": "^3.0.0",
+
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/stylelint-module": "^4.0.0",
+
+    "@types/webpack-env": "^1.15.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-nuxt": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^3.9.7"
+
   }
 }

@@ -1,75 +1,36 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        concentration
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    <!-- スクロールしなくて済む範囲内にトランプ52枚を緑のDivの中にImage52個で描画する -->
+    <div v-for="filename in filenamesArray" :key="filename" class="field">
+      <img :src="require(`@/assets/png/${filename}.png`)" class="trump" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'nuxt-property-decorator'
+import { TRUMP_MARKS, TRUMP_NUMBERS } from '~/store/constants'
+import { addZero } from '~/utils/formatUtils'
 
-export default Vue.extend({})
+@Component
+export default class Trump extends Vue {
+  // トランプ52枚のリスト
+  filenamesArray = TRUMP_MARKS.flatMap((trump) =>
+    TRUMP_NUMBERS.map((value) => `${trump.mark}${addZero(value.number)}`)
+  )
+}
 </script>
 
-<style>
+<style scoped>
 .container {
-  margin: 0 auto;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background-color: green;
 }
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.field {
+  display: inline-block;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.trump {
+  height: 150px;
+  width: 100px;
 }
 </style>
