@@ -15,14 +15,10 @@ import { addZero } from '~/utils/formatUtils'
 export default class Trump extends Vue {
   filenamesArray: String[] = []
 
-  // 52枚カードを作成する
+  // 52枚カードを表示する
   created() {
-    TRUMP_MARKS.forEach((trump) => this.trumpNums(trump.mark))
-  }
-
-  trumpNums(mark: string) {
-    this.filenamesArray = this.filenamesArray.concat(
-      TRUMP_NUMBERS.map((value) => `${mark}${addZero(value.number)}`)
+    this.filenamesArray = TRUMP_MARKS.flatMap((trump) =>
+      TRUMP_NUMBERS.map((value) => `${trump.mark}${addZero(value.number)}`)
     )
   }
 }
